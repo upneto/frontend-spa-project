@@ -88,6 +88,8 @@ Se o projeto for movido para um diretório diferente:
 - Cada funcionalidade tem seus próprios arquivos HTML, CSS e JS em `features/`.
 - O Bootstrap é carregado globalmente, então pode ser usado em qualquer arquivo.
 - Para adicionar novas páginas, crie uma nova pasta em `features/` com os três arquivos e atualize a navegação em `index.html`.
+- As páginas de autenticação (login, register, forgot-password) não aparecem no menu principal.
+- Autenticação simulada com localStorage (substitua por backend real).
 
 ## Requisitos
 

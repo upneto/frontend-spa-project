@@ -1,5 +1,6 @@
 // Main JS - SPA Router
 const content = document.getElementById('content');
+const nav = document.querySelector('nav');
 
 function loadPage(page) {
     fetch(`features/${page}/${page}.html`)
@@ -15,6 +16,13 @@ function loadPage(page) {
             const script = document.createElement('script');
             script.src = `features/${page}/${page}.js`;
             document.body.appendChild(script);
+            
+            // Controlar visibilidade do menu
+            if (['login', 'register', 'forgot-password'].includes(page)) {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+            }
         })
         .catch(error => {
             content.innerHTML = '<h1>Page not found</h1>';
@@ -22,9 +30,20 @@ function loadPage(page) {
 }
 
 window.addEventListener('hashchange', () => {
-    const page = location.hash.substring(1) || 'home';
+    const page = location.hash.substring(1) || 'login'; // Default to login if not logged in
     loadPage(page);
 });
 
 // Load initial page
-loadPage('home');
+const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+loadPage(isLoggedIn ? 'home' : 'login');
+
+// Logout functionality
+document.addEventListener('click', function(e) {
+    if (e.target.id === 'logoutLink') {
+        e.preventDefault();
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('username');
+        window.location.hash = 'login';
+    }
+});
