@@ -52,7 +52,7 @@ Este é um projeto de aplicação web de página única (SPA) desenvolvida com t
 
 ### Opção 2: Linux/Mac/Windows (Docker)
 1. Instale o Docker e Docker Compose.
-2. Execute `./start.sh` (Linux/Mac) ou adapte para Windows.
+2. Navegue para `server/docker/` e execute `./start.sh` (Linux/Mac) ou `docker-compose up --build`.
 3. Abra o navegador e acesse `http://localhost:8080`.
 4. Para parar, execute `./stop.sh` ou `docker-compose down`.
 
