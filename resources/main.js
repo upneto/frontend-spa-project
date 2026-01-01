@@ -28,24 +28,25 @@ function loadPage(page) {
         .then(html => {
             content.innerHTML = html;
            
-            // Remove previous CSS
+            // Remove CSS da pagina anterior para não gerar conflito
             if (currentCssLink) {
                 document.head.removeChild(currentCssLink);
             }
             
-            // Load CSS
+            // Carrega CSS da pagina 
             const link = document.createElement('link');
             link.rel = 'stylesheet';
             link.href = `${path}${page}/${page}.css`;
             document.head.appendChild(link);
             currentCssLink = link;
             
-            // Remove previous JS
+            
+            // Remove js da pagina anterior para não gerar conflito
             if (currentScript) {
                 document.body.removeChild(currentScript);
             }
             
-            // Load JS
+            // Carrega js da pagina 
             const script = document.createElement('script');
             script.src = `${path}${page}/${page}.js`;
             document.body.appendChild(script);
@@ -65,16 +66,25 @@ function loadPage(page) {
         });
 }
 
+// Executa funcao quando URL é altearada
 window.addEventListener('hashchange', () => {
     const page = location.hash.substring(1) || 'login';
     loadPage(page);
 });
 
-// Load initial page
+// Verifica autenticacao a partir do localStorage no carregamento da pagina
 const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 loadPage(isLoggedIn ? 'home' : 'login');
 
-// Logout functionality
+/*
+* -----------------------------------------------------------------
+*           FUNCOES GLOBAIS DO SISTEMA
+* -----------------------------------------------------------------
+*/
+
+/**
+ * Funcao de Logout
+ */
 document.addEventListener('click', function(e) {
     if (e.target.id === 'logoutLink') {
         e.preventDefault();
