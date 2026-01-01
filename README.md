@@ -45,10 +45,18 @@ Este é um projeto de aplicação web de página única (SPA) desenvolvida com t
 
 ## Como Executar
 
+### Opção 1: Windows (Nginx Local)
 1. Execute `start.bat` (como administrador se necessário).
 2. Abra o navegador e acesse `http://localhost:8080`.
-3. Navegue entre as páginas usando os links no menu.
-4. Para parar o servidor, execute `stop.bat`.
+3. Para parar o servidor, execute `stop.bat`.
+
+### Opção 2: Linux/Mac/Windows (Docker)
+1. Instale o Docker e Docker Compose.
+2. Execute `./start.sh` (Linux/Mac) ou adapte para Windows.
+3. Abra o navegador e acesse `http://localhost:8080`.
+4. Para parar, execute `./stop.sh` ou `docker-compose down`.
+
+**Nota**: A opção Docker permite rodar em qualquer sistema operacional com Docker instalado.
 
 ## Configuração para Diretório Diferente
 
