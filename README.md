@@ -50,7 +50,20 @@ Este é um projeto de aplicação web de página única (SPA) desenvolvida com t
 2. Abra o navegador e acesse `http://localhost:8080`.
 3. Para parar o servidor, execute `stop.bat`.
 
-### Opção 2: Linux/Mac/Windows (Docker)
+### Opção 2: Linux (Nginx Local)
+**Nota**: O binário do Nginx incluído é para Windows. Para Linux, instale o Nginx separadamente.
+
+1. Instale o Nginx:
+   - Ubuntu/Debian: `sudo apt update && sudo apt install nginx`
+   - CentOS/RHEL: `sudo yum install nginx` ou `sudo dnf install nginx`
+   - Arch: `sudo pacman -S nginx`
+2. Copie `server/nginx/nginx-1.25.3/conf/nginx.conf` para `/etc/nginx/nginx.conf` (ou o diretório de config do seu sistema).
+3. Edite o arquivo copiado e mude `root c:/Workspace/frontend/blank;` para o caminho absoluto do projeto no Linux, ex.: `root /home/usuario/projeto;`.
+4. Reinicie o Nginx: `sudo systemctl restart nginx` ou `sudo nginx -s reload`.
+5. Abra o navegador e acesse `http://localhost` (porta 80).
+6. Para parar: `sudo systemctl stop nginx` ou `sudo nginx -s stop`.
+
+### Opção 3: Linux/Mac/Windows (Docker)
 1. Instale o Docker e Docker Compose.
 2. Navegue para `server/docker/` e execute `./start.sh` (Linux/Mac) ou `docker-compose up --build`.
 3. Abra o navegador e acesse `http://localhost:8080`.
